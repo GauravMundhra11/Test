@@ -6,238 +6,188 @@
     <title>Step Flow</title>
     <!-- Font Awesome CDN for the person icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-
-        .step-container {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            position: relative;
-            padding: 30px 0; /* Padding to accommodate icon and arrows */
-        }
-
-        .step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            margin: 0 20px; /* Margin to ensure spacing */
-        }
-
-        .circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 14px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: #ccc;
-            position: relative;
-        }
-
-        /* Styles for different step states */
-        .completed {
-            background-color: #4CAF50; /* Green for completed steps */
-        }
-
-        .current {
-            background-color: #f1c40f; /* Yellow for current step */
-        }
-
-        .upcoming {
-            background-color: #ccc; /* Gray for upcoming steps */
-        }
-
-        .step-label {
-            margin-top: 8px;
-            font-size: 12px;
-            color: #333;
-            text-align: center;
-        }
-
-        .arrow {
-            font-size: 30px;
-            color: #ddd;
-            margin: 0 5px;
-            position: relative;
-        }
-
-        .completed-arrow {
-            color: #4CAF50; /* Green for completed steps */
-        }
-
-        .current-arrow {
-            color: #f1c40f; /* Yellow for current step */
-        }
-
-        .arrow-container {
-            display: flex;
-            align-items: center;
-            width: 50px;
-        }
-
-        .person-icon {
-            position: absolute;
-            top: -30px; /* Adjust to fit above the circle */
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 20px;
-            color: #333;
-            display: none; /* Hidden by default */
-        }
-
-        .current .person-icon {
-            display: block; /* Show the person icon only for the current step */
-        }
-    </style>
-    <script>
-        var current_step = 4; // Dynamically set this value based on your flow
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set classes and person icon based on current_step value
-            for (let i = 1; i <= 8; i++) {
-                let circle = document.getElementById(`step${i}`);
-                let step = circle.parentElement;
-                let arrow = document.getElementById(`arrow${i - 1}`);
-
-                if (i < current_step) {
-                    circle.classList.add('completed');
-                    if (arrow) arrow.classList.add('completed-arrow');
-                } else if (i === current_step) {
-                    circle.classList.add('current');
-                    if (arrow) arrow.classList.add('current-arrow');
-                } else {
-                    circle.classList.add('upcoming');
-                }
-            }
-        });
-    </script>
 </head>
-<body>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
 
-<div class="step-container">
-    <!-- Step 1 -->
-    <div class="step">
-        <div class="circle" id="step1">
-            <i class="fas fa-walking person-icon"></i>
-            1
-        </div>
-        <div class="step-label">RO Creation & PMO Approval (VMO)</div>
-    </div>
-    <div class="arrow-container">
-        <div class="arrow" id="arrow0">→</div>
-    </div>
-
-    <!-- Step 2 -->
-    <div class="step">
-        <div class="circle" id="step2">
-            <i class="fas fa-walking person-icon"></i>
-            2
-        </div>
-        <div class="step-label">Cost Center & Finance Approvals</div>
-    </div>
-    <div class="arrow-container">
-        <div class="arrow" id="arrow1">→</div>
-    </div>
-
-    <!-- Step 3 -->
-    <div class="step">
-        <div class="circle" id="step3">
-            <i class="fas fa-walking person-icon"></i>
-            3
-        </div>
-        <div class="step-label">Supplier Acceptance</div>
-    </div>
-    <div class="arrow-container">
-        <div class="arrow" id="arrow2">→</div>
-    </div>
-
-    <!-- Step 4 -->
-    <div class="step">
-        <div class="circle" id="step4">
-            <i class="fas fa-walking person-icon"></i>
-            4
-        </div>
-        <div class="step-label">Supplier Activity Items</div>
-    </div>
-    <div class="arrow-container">
-        <div class="arrow" id="arrow3">→</div>
-    </div>
-
-    <!-- Step 5 -->
-    <div class="step">
-        <div class="circle" id="step5">
-            <i class="fas fa-walking person-icon"></i>
-            5
-        </div>
-        <div class="step-label">VMO Activity Items</div>
-    </div>
-    <div class="arrow-container">
-        <div class="arrow" id="arrow4">→</div>
-    </div>
-
-    <!-- Step 6 -->
-    <div class="step">
-        <div class="circle" id="step6">
-            <i class="fas fa-walking person-icon"></i>
-            6
-        </div>
-        <div class="step-label">Applied Materials Security Approval</div>
-    </div>
-    <div class="arrow-container">
-        <div class="arrow" id="arrow5">→</div>
-    </div>
-
-    <!-- Step 7 -->
-    <div class="step">
-        <div class="circle" id="step7">
-            <i class="fas fa-walking person-icon"></i>
-            7
-        </div>
-        <div class="step-label">RO Activation & PSID Generation</div>
-    </div>
-    <div class="arrow-container">
-        <div class="arrow" id="arrow6">→</div>
-    </div>
-
-    <!-- Step 8 -->
-    <div class="step">
-        <div class="circle" id="step8">
-            <i class="fas fa-walking person-icon"></i>
-            8
-        </div>
-        <div class="step-label">IT Asset Request</div>
-    </div>
+<div style="width: 100%; padding: 40px; box-sizing: border-box;">
+    <table style="width: 100%; border-collapse: collapse; text-align: center;">
+        <tr>
+            <!-- Step 1 -->
+            <td style="padding: 10px;">
+                <div align="center">
+                    <!--[if mso]>
+                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                        style="height:70px;v-text-anchor:middle;width:70px;" 
+                        arcsize="50%" strokecolor="none" fillcolor="#4CAF50">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff; font-size:20px; font-weight:bold;">1</center>
+                    </v:roundrect>
+                    <![endif]-->
+                    <!--[if !mso]><!-->
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background-color: #4CAF50; color: #ffffff; line-height: 70px; text-align: center; font-weight: bold; font-size: 20px;">
+                        1
+                    </div>
+                    <!--<![endif]-->
+                </div>
+                <div style="font-size: 14px; color: #333; margin-top: 5px;">RO Creation & PMO Approval (VMO)</div>
+            </td>
+            <td style="padding: 10px;">
+                <div style="font-size: 30px; color: #4CAF50;">→</div>
+            </td>
+            <!-- Step 2 -->
+            <td style="padding: 10px;">
+                <div align="center">
+                    <!--[if mso]>
+                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                        style="height:70px;v-text-anchor:middle;width:70px;" 
+                        arcsize="50%" strokecolor="none" fillcolor="#4CAF50">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff; font-size:20px; font-weight:bold;">2</center>
+                    </v:roundrect>
+                    <![endif]-->
+                    <!--[if !mso]><!-->
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background-color: #4CAF50; color: #ffffff; line-height: 70px; text-align: center; font-weight: bold; font-size: 20px;">
+                        2
+                    </div>
+                    <!--<![endif]-->
+                </div>
+                <div style="font-size: 14px; color: #333; margin-top: 5px;">Cost Center & Finance Approvals</div>
+            </td>
+            <td style="padding: 10px;">
+                <div style="font-size: 30px; color: #4CAF50;">→</div>
+            </td>
+            <!-- Step 3 -->
+            <td style="padding: 10px;">
+                <div align="center">
+                    <!--[if mso]>
+                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                        style="height:70px;v-text-anchor:middle;width:70px;" 
+                        arcsize="50%" strokecolor="none" fillcolor="#4CAF50">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff; font-size:20px; font-weight:bold;">3</center>
+                    </v:roundrect>
+                    <![endif]-->
+                    <!--[if !mso]><!-->
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background-color: #4CAF50; color: #ffffff; line-height: 70px; text-align: center; font-weight: bold; font-size: 20px;">
+                        3
+                    </div>
+                    <!--<![endif]-->
+                </div>
+                <div style="font-size: 14px; color: #333; margin-top: 5px;">Supplier Acceptance</div>
+            </td>
+            <td style="padding: 10px;">
+                <div style="font-size: 30px; color: #4CAF50;">→</div>
+            </td>
+            <!-- Step 4 -->
+            <td style="padding: 10px;">
+                <div align="center">
+                    <!--[if mso]>
+                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                        style="height:70px;v-text-anchor:middle;width:70px;" 
+                        arcsize="50%" strokecolor="none" fillcolor="#f1c40f">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff; font-size:20px; font-weight:bold;">4</center>
+                    </v:roundrect>
+                    <![endif]-->
+                    <!--[if !mso]><!-->
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background-color: #f1c40f; color: #ffffff; line-height: 70px; text-align: center; font-weight: bold; font-size: 20px;">
+                        4
+                    </div>
+                    <!--<![endif]-->
+                </div>
+                <div style="font-size: 14px; color: #333; margin-top: 5px;">Supplier Activity Items</div>
+            </td>
+            <td style="padding: 10px;">
+                <div style="font-size: 30px; color: #f1c40f;">→</div>
+            </td>
+            <!-- Step 5 -->
+            <td style="padding: 10px;">
+                <div align="center">
+                    <!--[if mso]>
+                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                        style="height:70px;v-text-anchor:middle;width:70px;" 
+                        arcsize="50%" strokecolor="none" fillcolor="#cccccc">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff; font-size:20px; font-weight:bold;">5</center>
+                    </v:roundrect>
+                    <![endif]-->
+                    <!--[if !mso]><!-->
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background-color: #cccccc; color: #ffffff; line-height: 70px; text-align: center; font-weight: bold; font-size: 20px;">
+                        5
+                    </div>
+                    <!--<![endif]-->
+                </div>
+                <div style="font-size: 14px; color: #333; margin-top: 5px;">VMO Activity Items</div>
+            </td>
+            <td style="padding: 10px;">
+                <div style="font-size: 30px; color: #cccccc;">→</div>
+            </td>
+            <!-- Step 6 -->
+            <td style="padding: 10px;">
+                <div align="center">
+                    <!--[if mso]>
+                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                        style="height:70px;v-text-anchor:middle;width:70px;" 
+                        arcsize="50%" strokecolor="none" fillcolor="#cccccc">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff; font-size:20px; font-weight:bold;">6</center>
+                    </v:roundrect>
+                    <![endif]-->
+                    <!--[if !mso]><!-->
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background-color: #cccccc; color: #ffffff; line-height: 70px; text-align: center; font-weight: bold; font-size: 20px;">
+                        6
+                    </div>
+                    <!--<![endif]-->
+                </div>
+                <div style="font-size: 14px; color: #333; margin-top: 5px;">Applied Materials Security Approval</div>
+            </td>
+            <td style="padding: 10px;">
+                <div style="font-size: 30px; color: #cccccc;">→</div>
+            </td>
+            <!-- Step 7 -->
+            <td style="padding: 10px;">
+                <div align="center">
+                    <!--[if mso]>
+                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                        style="height:70px;v-text-anchor:middle;width:70px;" 
+                        arcsize="50%" strokecolor="none" fillcolor="#cccccc">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff; font-size:20px; font-weight:bold;">7</center>
+                    </v:roundrect>
+                    <![endif]-->
+                    <!--[if !mso]><!-->
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background-color: #cccccc; color: #ffffff; line-height: 70px; text-align: center; font-weight: bold; font-size: 20px;">
+                        7
+                    </div>
+                    <!--<![endif]-->
+                </div>
+                <div style="font-size: 14px; color: #333; margin-top: 5px;">RO Activation & PSID Generation</div>
+            </td>
+            <td style="padding: 10px;">
+                <div style="font-size: 30px; color: #cccccc;">→</div>
+            </td>
+            <!-- Step 8 -->
+            <td style="padding: 10px;">
+                <div align="center">
+                    <!--[if mso]>
+                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                        style="height:70px;v-text-anchor:middle;width:70px;" 
+                        arcsize="50%" strokecolor="none" fillcolor="#cccccc">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff; font-size:20px; font-weight:bold;">8</center>
+                    </v:roundrect>
+                    <![endif]-->
+                    <!--[if !mso]><!-->
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background-color: #cccccc; color: #ffffff; line-height: 70px; text-align: center; font-weight: bold; font-size: 20px;">
+                        8
+                    </div>
+                    <!--<![endif]-->
+                </div>
+                <div style="font-size: 14px; color: #333; margin-top: 5px;">IT Asset Request</div>
+            </td>
+        </tr>
+    </table>
 </div>
-
-<script>
-    var current_step = 4; // Dynamically set this value based on your flow
-
-    document.addEventListener('DOMContentLoaded', () => {
-        // Set classes and person icon based on current_step value
-        for (let i = 1; i <= 8; i++) {
-            let circle = document.getElementById(`step${i}`);
-            let step = circle.parentElement;
-            let arrow = document.getElementById(`arrow${i - 1}`);
-
-            if (i < current_step) {
-                circle.classList.add('completed');
-                if (arrow) arrow.classList.add('completed-arrow');
-            } else if (i === current_step) {
-                circle.classList.add('current');
-                if (arrow) arrow.classList.add('current-arrow');
-            } else {
-                circle.classList.add('upcoming');
-            }
-        }
-    });
-</script>
 
 </body>
 </html>
